@@ -18,3 +18,14 @@ def read_valid(lines: list[str]) -> list[dict]:
         except ValueError:
             pass
     return valid_lines
+
+def average_by_city(records: list[dict]) -> dict:
+    sum_by_city = {}
+    count_by_city = {}
+    for record in records:
+        sum_by_city[record["city"]] = sum_by_city.get(record["city"], 0) + record["temp"]
+        count_by_city[record["city"]] = count_by_city.get(record["city"], 0) + 1
+    avg_by_city = {}
+    for city in sum_by_city:
+        avg_by_city[city] = sum_by_city[city] / count_by_city[city]
+    return dict(city=avg_by_city, temp=avg_by_city["temp"])
