@@ -2,7 +2,7 @@ def parse_record(line: str) -> dict:
     if len(line.split(";")) != 3:
         raise ValueError(f"Incorrect data format.: {line}")
     city, temp_str, date = line.split(";")
-    if not city or not date
+    if not city or not date:
         raise ValueError(f"Incorrect data format.: {line!r}")
     try:
         temp = float(temp_str)
@@ -31,13 +31,13 @@ def average_by_city(records: list[dict]) -> dict:
     return avg_by_city
 
 def warmest_city(records: list[dict]) -> str:
-    avereges = average_by_city(records)
-    if not avereges:
+    averages = average_by_city(records)
+    if not averages:
         return ""
     best_city = ""
     best_avg = -float("inf")
-    for city in sorted(avereges):
-        if avereges[city] > best_avg:
+    for city in sorted(averages):
+        if averages[city] > best_avg:
             best_city = city
-            best_avg = avereges[city]
+            best_avg = averages[city]
     return best_city
