@@ -28,4 +28,16 @@ def average_by_city(records: list[dict]) -> dict:
     avg_by_city = {}
     for city in sum_by_city:
         avg_by_city[city] = sum_by_city[city] / count_by_city[city]
-    return dict(city=avg_by_city, temp=avg_by_city["temp"])
+    return avg_by_city
+
+def warmest_city(records: list[dict]) -> str:
+    avereges = average_by_city(records)
+    if not avereges:
+        return ""
+    best_city = ""
+    best_avg = -float("inf")
+    for city in sorted(avereges):
+        if avereges[city] > best_avg:
+            best_city = city
+            best_avg = avereges[city]
+    return best_city
