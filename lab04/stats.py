@@ -8,7 +8,7 @@ def parse_record(line: str) -> dict:
         temp = float(temp_str)
     except ValueError:
         raise ValueError(f"Incorrect data format.: {line!r}")
-    return {"city": city, "temp": temp, "date": date}
+    return {"city": city, "temperature": temp, "date": date}
 
 def read_valid(lines: list[str]) -> list[dict]:
     valid_lines = []
@@ -23,7 +23,7 @@ def average_by_city(records: list[dict]) -> dict:
     sum_by_city = {}
     count_by_city = {}
     for record in records:
-        sum_by_city[record["city"]] = sum_by_city.get(record["city"], 0) + record["temp"]
+        sum_by_city[record["city"]] = sum_by_city.get(record["city"], 0) + record["temperature"]
         count_by_city[record["city"]] = count_by_city.get(record["city"], 0) + 1
     avg_by_city = {}
     for city in sum_by_city:
