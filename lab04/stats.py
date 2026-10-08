@@ -5,6 +5,7 @@ def parse_record(line: str) -> dict:
     city, temp_str, date = line.split(";")
     if not city or not date or not temp_str:
         raise ValueError(f"Incorrect data format.: {line!r}")
+    temp_str = temp_str.replace(",", ".")
     try:
         temp = float(temp_str)
     except ValueError:
