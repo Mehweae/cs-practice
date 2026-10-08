@@ -9,3 +9,12 @@ def parse_record(line: str) -> dict:
     except ValueError:
         raise ValueError(f"Incorrect data format.: {line!r}")
     return {"city": city, "temp": temp, "date": date}
+
+def read_valid(lines: list[str]) -> list[dict]:
+    valid_lines = []
+    for line in lines:
+        try:
+            valid_lines.append(parse_record(line))
+        except ValueError:
+            pass
+    return valid_lines
