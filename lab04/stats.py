@@ -2,7 +2,7 @@ def parse_record(line: str) -> dict:
     if len(line.split(";")) != 3:
         raise ValueError(f"Incorrect data format.: {line}")
     city, temp_str, date = line.split(";")
-    if not city or not date:
+    if not city or not date or not temp_str:
         raise ValueError(f"Incorrect data format.: {line!r}")
     try:
         temp = float(temp_str)
