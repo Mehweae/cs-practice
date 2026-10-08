@@ -14,8 +14,6 @@ def parse_record(line: str) -> dict:
 def read_valid(lines: list[str]) -> list[dict]:
     valid_lines = []
     for line in lines:
-        if not line.strip():
-            continue
         try:
             valid_lines.append(parse_record(line))
         except ValueError:
