@@ -1,4 +1,6 @@
 def parse_record(line: str) -> dict:
+    if not line:
+        raise ValueError(f"Incorrect data format.: {line}")
     if len(line.split(";")) != 3:
         raise ValueError(f"Incorrect data format.: {line}")
     city, temp_str, date = line.split(";")
