@@ -50,7 +50,7 @@ def count_levels(lines):
             else:
                 out["BROKEN"] = 1
     return out
-print(count_levels([]))
+
 def top_errors(lines: list[str], n: int):
     '''Находим топ по ошибок по уровню error'''
     out = []
