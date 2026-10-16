@@ -50,11 +50,11 @@ def top_errors(lines: list[str], n: int):
 def format_report(counts: dict, errors: list[list]):
     '''Формируем отчёт по данным'''
     report = "Отчёт по журналу\n\n"
-    levels_sorted = sorted(counts[0].items())
+    levels_sorted = sorted(counts.items())
     for i in levels_sorted:
         report.append(f"{i}: {counts[i]}\n")
     report.append("\nЧастые ошибки:\n")
-    list_of_top_errors = top_errors(errors, 3)
+    list_of_top_errors = errors[:3]
     for i in list_of_top_errors:
         report.append(f"- {i[0]} - {i[1]}")
     return report
