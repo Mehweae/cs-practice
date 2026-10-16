@@ -1,7 +1,7 @@
 import logstats
 import sys
 
-path = sys.stdin.read().strip()
+path = input()
 report_text = ""
 with open(path.strip(), encoding = "utf-8") as f:
     levels_with_count = logstats.count_levels(f.readlines())
