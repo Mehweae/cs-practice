@@ -25,6 +25,7 @@ def count_levels(lines):
     return out
 
 def top_errors(lines: list[str], n: int):
+    '''Находим топ по ошибок по уровню error'''
     out = []
     for i in lines:
         line = i.rstrip("\n")
@@ -44,3 +45,15 @@ def top_errors(lines: list[str], n: int):
         except ValueError:
             pass
     return sorted(out, key=lambda x: (-x[1], x[0]))[:n]
+
+def format_report(counts: dict, errors: list[list]):
+    '''Формируем отчёт по данным'''
+    report = "Отчёт по журналу\n\n"
+    levels_sorted = sorted(counts[0].items())
+    for i in levels_sorted:
+        report.append(f"{i}: {counts[i]}\n")
+    report.append("\nЧастые ошибки:\n")
+    list_of_top_errors = top_errors(errors, 3)
+    for i in list_of_top_errors:
+        report.append(f"- {i[0]} - {i[1]}")
+    return report
