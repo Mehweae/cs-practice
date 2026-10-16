@@ -45,7 +45,10 @@ def count_levels(lines):
                 else:
                     out["BROKEN"] = 1
         except ValueError:
-            out["BROKEN"] += 1
+            if "BROKEN" in out:
+                    out["BROKEN"] += 1
+                else:
+                    out["BROKEN"] = 1
     return out
 print(count_levels([]))
 def top_errors(lines: list[str], n: int):
