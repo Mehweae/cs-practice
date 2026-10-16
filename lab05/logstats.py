@@ -79,5 +79,5 @@ def format_report(counts: dict, errors: list[list]):
     report = report + ("\nЧастые ошибки:\n")
     list_of_top_errors = errors[:3]
     for i in list_of_top_errors:
-        report = report + (f"- {i[0]} - {i[1]}\n")
+        report = report + (f"- {i[0]} — {i[1]}\n")
     return report
