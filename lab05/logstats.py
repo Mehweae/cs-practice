@@ -1,15 +1,13 @@
-from operator import truediv
-from sys import flags
-
 
 def parse_event(line) :
     '''Парсим и резолвим строчку'''
     line = line.strip()
     parts = line.split(maxsplit=2)
-    if len(parts) == 2:
+    if len(parts) == 3:
         return {"time": parts[0], "level": parts[1], "message": parts[2]}
     else:
         raise ValueError("Inavlid format")
+
 def count_levels(lines):
     '''Разбиваем строчку на виды ошибок'''
     out = {"BROKEN": 0, "DEBUG": 0, "ERROR": 0, "INFO": 0, "WARNING": 0}
@@ -19,7 +17,10 @@ def count_levels(lines):
             continue
         try:
             parsed_item = parse_event(i)
-            out[parsed_item["level"]] += 1
+            try:
+                out[parsed_item["level"]] += 1
+            except KeyError:
+                out["BROKEN"] += 1
         except ValueError:
             out["BROKEN"] += 1
     return out
