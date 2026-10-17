@@ -1,6 +1,3 @@
-from unittest import case
-
-
 def parse_event(line) :
     '''Парсим и резолвим строчку'''
     line = line.strip()
