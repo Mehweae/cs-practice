@@ -1,18 +1,20 @@
 import logstats
 
-try:
-    path = input("Введите имя файла:").strip()
-    report_text = ""
-    with open(path, encoding="utf-8") as f:
-        levels_with_count = logstats.count_levels(f.readlines())
-        count_of_parsed_strings = levels_with_count["BROKEN"] + levels_with_count["DEBUG"] + levels_with_count["INFO"] + \
-                                  levels_with_count["WARNING"] + levels_with_count["ERROR"]
-        report_text = f"{count_of_parsed_strings}\n{levels_with_count['ERROR']}\n{levels_with_count['BROKEN']}"
+def main():
+    path = input().strip()
 
-    print(report_text)
+    with open(path, encoding="utf-8") as log:
+        counts = logstats.count_levels(log)
 
-    with open("report.txt", "w", encoding="utf-8") as f:
-        f.write(report_text)
-except EOFError:
-    print()
+    print(sum(counts.values()))
+    print(counts.get("ERROR", 0))
+    print(counts.get("BROKEN", 0))
 
+    with open(path, encoding="utf-8") as log:
+        errors = logstats.top_errors(log, 3)
+
+    with open("report.txt", "w", encoding="utf-8") as report:
+        report.write(logstats.format_report(counts, errors))
+
+if __name__ == "__main__":
+    main()
