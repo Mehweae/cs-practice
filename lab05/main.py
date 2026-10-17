@@ -1,6 +1,6 @@
 import logstats
 
-path = input("Введите имя файла:")
+path = input("Введите имя файла:").strip()
 report_text = ""
 with open(path, encoding = "utf-8") as f:
     levels_with_count = logstats.count_levels(f.readlines())
