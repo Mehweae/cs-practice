@@ -13,5 +13,13 @@ def deepest_path(paths):
         return ''
     max_deep = max(p.count('/') for p in paths)
     return min(p for p in paths.sort() if p.count('/') == max_deep)
+
 def human_size(n_bytes):
-    ...
+    units = ["Б", "КБ", "МБ", "ГБ", "ТБ"]
+    for unit in units:
+        if n_bytes < 1024:
+            if unit == "Б":
+                return f"{n_bytes} {unit}"  # байты — целым числом
+            return f"{n_bytes:.1f} {unit}"
+        n_bytes /= 1024
+    return f"{(n_bytes * 1024):.1f} ТБ"
