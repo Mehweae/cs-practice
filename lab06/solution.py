@@ -19,7 +19,7 @@ def human_size(n_bytes):
     for unit in units:
         if n_bytes < 1024:
             if unit == "Б":
-                return f"{n_bytes} {unit}"  # байты — целым числом
+                return f"{n_bytes} {unit}"
             return f"{n_bytes:.1f} {unit}"
         n_bytes /= 1024
     return f"{(n_bytes * 1024):.1f} ТБ"
