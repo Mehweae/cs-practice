@@ -12,8 +12,16 @@ def count_by_extension(paths):
 def deepest_path(paths):
     if not paths:
         return ''
-    max_deep = max(p.count('/') for p in paths)
-    return min(p for p in paths.sort() if p.count('/') == max_deep)
+    path_with_count = []
+    paths = paths.sort()
+    max_count = paths[0]
+
+    for p in paths:
+        count = p.count('/')
+        path_with_count.append(count)
+        if count > max_count:
+            max_count = count
+    return paths[paths.index(max_count)]
 
 def human_size(n_bytes):
     units = ["Б", "КБ", "МБ", "ГБ", "ТБ"]
