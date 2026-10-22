@@ -2,8 +2,8 @@ def count_by_extension(paths):
     result = {}
     for p in paths:
         name = p.split('/')[-1]
-        if '.' in name:
-            ext = name[name.rfind('.'):].lower()
+        if '.' in name and name[:name.index('.')] != "":
+            ext = name[name.rfind('.') + 1:].lower()
         else:
             ext = ""
         result[ext] = result.get(ext, 0) + 1
