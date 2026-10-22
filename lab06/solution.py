@@ -11,17 +11,17 @@ def count_by_extension(paths):
 
 def deepest_path(paths):
     if not paths:
-        return ''
-    path_with_count = []
-    paths = paths.sort()
-    max_count = paths[0]
-
+        return ""
+    max_depth = -1
+    candidates =
     for p in paths:
-        count = p.count('/')
-        path_with_count.append(count)
-        if count > max_count:
-            max_count = count
-    return paths[paths.index(max_count)]
+        depth = p.count('/')
+        if depth > max_depth:
+            max_depth = depth
+            candidates = [p]
+        elif depth == max_depth:
+            candidates.append(p)
+    return min(candidates)
 
 def human_size(n_bytes):
     units = ["Б", "КБ", "МБ", "ГБ", "ТБ"]
