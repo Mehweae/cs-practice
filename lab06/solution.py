@@ -13,7 +13,7 @@ def deepest_path(paths):
     if not paths:
         return ""
     max_depth = -1
-    candidates =
+    candidates = []
     for p in paths:
         depth = p.count('/')
         if depth > max_depth:
