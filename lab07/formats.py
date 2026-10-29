@@ -2,9 +2,17 @@ import csv
 import json
 
 def csv_to_records(text):
-    reader = csv.reader(text.splitlines())
-    header = next(reader)
-    return [dict(zip(header.strip(), row.strip())) for row in reader]
+    lines = text.splitlines()
+    header = lines[0].split(',')
+
+    records = []
+    for line in lines[1:]:
+        if not line.strip():
+            continue
+        values = line.split(',')
+        records.append({k.strip(): v.strip()
+                        for k, v in zip(header, values)})
+    return records
 
 def _strip_comment(text):
     pos = text.find('#')
@@ -74,4 +82,3 @@ def merge_by_key(rows, extra, key):
 
 def records_to_json(records):
     return json.dumps(records, ensure_ascii=False, indent=2, sort_keys=True)
-csv_to_records("id,город\n1,Азов\n2,Шахты")
