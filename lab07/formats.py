@@ -4,7 +4,7 @@ import json
 def csv_to_records(text):
     reader = csv.reader(text.splitlines())
     header = next(reader)
-    return [dict(zip(header, row)) for row in reader]
+    return [dict(zip(header.strip(), row.strip())) for row in reader]
 
 def _strip_comment(text):
     pos = text.find('#')
