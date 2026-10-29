@@ -2,17 +2,19 @@ import csv
 import json
 
 def csv_to_records(text):
-    lines = text.splitlines()
-    header = lines[0].split(',')
+    if text:
+        lines = text.splitlines()
+        header = lines[0].split(',')
 
-    records = []
-    for line in lines[1:]:
-        if not line.strip():
-            continue
-        values = line.split(',')
-        records.append({k.strip(): v.strip()
-                        for k, v in zip(header, values)})
-    return records
+        records = []
+        for line in lines[1:]:
+            if not line.strip():
+                continue
+            values = line.split(',')
+            records.append({k.strip(): v.strip()
+                            for k, v in zip(header, values)})
+        return records
+    return {}
 
 def _strip_comment(text):
     pos = text.find('#')
