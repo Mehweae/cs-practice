@@ -70,3 +70,6 @@ def merge_by_key(rows, extra, key):
             if field not in row:
                 row[field] = value
     return rows
+
+def records_to_json(records):
+    return json.dumps(records, ensure_ascii=False, indent=2, sort_keys=True)
