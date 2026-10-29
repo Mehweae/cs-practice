@@ -14,7 +14,7 @@ def csv_to_records(text):
             records.append({k.strip(): v.strip()
                             for k, v in zip(header, values)})
         return records
-    return ""
+    return []
 
 def _strip_comment(text):
     pos = text.find('#')
