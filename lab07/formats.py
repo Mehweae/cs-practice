@@ -60,3 +60,13 @@ def parse_settings(lines):
                     settings[current_list_key].append(_parse_scalar(item))
 
     return settings
+
+def merge_by_key(rows, extra, key):
+    for row in rows:
+        info = extra.get(row.get(key))
+        if info is None:
+            continue
+        for field, value in info.items():
+            if field not in row:
+                row[field] = value
+    return rows
