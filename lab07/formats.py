@@ -21,7 +21,6 @@ def _strip_comment(text):
     return text[:pos].strip() if pos != -1 else text.strip()
 
 def _parse_scalar(value):
-    value = value.strip()
     if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
         return value[1:-1]
     low = value.lower()
@@ -37,6 +36,11 @@ def _parse_scalar(value):
         return float(value)
     except ValueError:
         pass
+
+    if value.count(',') == 1:
+        left, _, right = value.partition(',')
+        if left.lstrip('-+').isdigit() and right.isdigit():
+            return float(f"{left}.{right}")
     return value
 
 def parse_settings(lines):
