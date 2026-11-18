@@ -13,7 +13,7 @@ print(hours, hours.shape, hours.ndim, hours.size, hours.dtype)
 #Задание 2
 print(hours[2], hours[-1], hours[2:5], hours[::2], hours[::-1], sep = "\n")
 
-#задание 3
+#Задание 3
 temperatures = np.array([
     [12, 14, 13, 15],
     [11, 13, 16, 17],
@@ -21,4 +21,17 @@ temperatures = np.array([
 ])
 print(temperatures.shape, temperatures.ndim, temperatures.size, temperatures[1, 2], temperatures[0], temperatures[:, -1],\
       temperatures[:2, 1:],temperatures[:2, 1:3], sep = "\n")
+
+#Задание 4
+matrix = np.arange(1, 26).reshape(5, 5)
+
+def print_matrix(matrix):
+    print(matrix, matrix.shape)
+
+print_matrix(matrix[:2])
+print_matrix(matrix[-2:])
+print_matrix(matrix[:, :2])
+print_matrix(matrix[1:4, 2:5])
+print_matrix(matrix[-2:, -2:])
+
 
