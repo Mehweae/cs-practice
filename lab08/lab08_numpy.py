@@ -11,3 +11,4 @@ identity = np.identity(3, int)
 print(hours, hours.shape, hours.ndim, hours.size, hours.dtype)
 
 #Задание 2
+print(hours[2], hours[-1], hours[2:5], hours[::2], hours[::-1])
