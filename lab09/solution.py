@@ -11,3 +11,9 @@ def change_vector(values):
     val[2:5] = 99
     val[::2] = -1
     return val
+
+def cap_above(values, limit):
+    res = values.copy()
+    mask = values > limit
+    res[mask] = limit
+    return res
