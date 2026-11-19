@@ -34,4 +34,21 @@ print_matrix(matrix[:, :2])
 print_matrix(matrix[1:4, 2:5])
 print_matrix(matrix[-2:, -2:])
 
+#Задание 5
+vector = np.array([10, 20, 30, 40, 50])
+vector[1:4] = 0
 
+small_matrix = np.arange(1, 10).reshape(3, 3)
+small_matrix[0, :] = -1
+small_matrix[1:, 1:] = 9
+changed_hours = hours.copy()
+changed_hours[2:4] = 99
+changed_hours[::2] = -1
+print(changed_hours, hours, sep = "\n")
+# .copy() необходимо для того, чтобы создать новый массив, который будет одинаковым с исходным, а не ссылку исходный
+
+changed_matrix = matrix.copy()
+changed_matrix[1, :] = 0
+changed_matrix[:, -1] = -1
+changed_matrix[1:4, 1:4] = 100
+print(changed_matrix, matrix, sep = "\n")
