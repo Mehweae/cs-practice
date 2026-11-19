@@ -6,3 +6,8 @@ def make_hours():
 def vector_report(values):
     return {"third": values[2], "last": values[-1], "middle": values[2:6], "every_second": values[::2], "reversed": values[::-1]}
 
+def change_vector(values):
+    val = values.copy()
+    val[2:5] = 99
+    val[::2] = -1
+    return val
