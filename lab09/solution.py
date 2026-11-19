@@ -2,8 +2,10 @@ from typing import List
 
 import numpy as np
 
-def make_hours() -> list[int] :
-    return list(np.arange(0, 24, 3))
+def make_hours() -> list[float] :
+    return [i for i in range(0, 23, 3)]
+
+print(make_hours())
 
 def vector_report(values:list[float]) -> dict:
     return {"third": values[2], "last": values[-1], "middle": values[2:6], "every_second": values[::2], "reversed": values[::-1]}
@@ -12,7 +14,7 @@ def change_vector(values: list[float]) -> list[float]:
     val = np.asarray(values).copy()
     val[2:5] = 99
     val[::2] = -1
-    return list(val)
+    return val.tolist()
 
 def cap_above(values: list[float], limit: float) -> list[float]:
     res = values.copy()
